@@ -11,7 +11,7 @@ public class ClothDemo : MonoBehaviour
     private Mesh mesh;
     private Material material;
     private Matrix4x4[] drawPlanePosMatrix;
-    DateTime startTime;
+    private DateTime startTime;
     private ClothBody clothBody;
     private Solver solver;
     private const float width = 20;
@@ -69,22 +69,17 @@ public class ClothDemo : MonoBehaviour
         mesh.uv = uvs.ToArray();
         mesh.triangles = triangleVerts.ToArray();
         mesh.bounds = new Bounds(new Vector3(0, 0, 0), new Vector3(width, height, 0));
-        material = Resources.Load<Material>("Cloth/ClothMaterial");
+        material = Resources.Load<Material>("DoubleEdgeMaterial");
     }
-    DirectedForce windX, windY, windZ;
     List<AbsolutelyPosConstraint> jointConstraints = new List<AbsolutelyPosConstraint>();
     private void initClothBody()
     {
         solver = new Solver();
-        clothBody = new ClothBody(mesh, 0.5f, 1, 0.25f, 0.25f);
+        clothBody = new ClothBody(mesh, 1, 0.25f);
         clothBody.damping = 1;
         solver.addBody(clothBody);
-        windX = new DirectedForce(10, 0, 0);
-        windY = new DirectedForce(0, 0, 0);
-        windZ = new DirectedForce(0, 0, 0);
-        solver.addForce(windX);
-        solver.addForce(windY);
-        solver.addForce(windZ);
+        DirectedForce windForce = new DirectedForce(20, 2, 0);
+        solver.addForce(windForce);
         solver.addForce(new DirectedForce(0, -9.8f, 0));
         for (int i = 0; i < jointIndexes.Count; i++)
         {
@@ -98,17 +93,18 @@ public class ClothDemo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //加一个位移观察效果
+        TimeSpan time = DateTime.Now - startTime;
+        foreach (AbsolutelyPosConstraint c in jointConstraints)
+        {
+            c.z += (float)(Math.Sin(time.TotalMilliseconds / 500) / 8);
+        }
         for (int i = 0; i < 3; i++)
         {
             solver.solve((float)(1.0 / 60.0 / 3.0));
         }
         mesh.vertices = clothBody.positions;
         Graphics.DrawMeshInstanced(mesh, 0, material, drawPlanePosMatrix, 1);
-        TimeSpan timeSpan = DateTime.Now - startTime;
-        System.Random r = new System.Random();
-        windX.direction.x += (float)Math.Sin(timeSpan.TotalMilliseconds);
-        windY.direction.y = (float)Math.Sin(timeSpan.TotalMilliseconds + r.Next(10, 100)) * 40.0f;
-        windZ.direction.z = (float)Math.Sin(timeSpan.TotalMilliseconds + r.Next(10, 100)) * 20.0f;
     }
 
     void OnDestroy()

@@ -6,7 +6,7 @@ namespace Assets.src.constraint
     public class AbsolutelyPosConstraint : AConstraint
     {
         private int index;
-        private float x, y, z;
+        public float x, y, z;
         public AbsolutelyPosConstraint(Body body, int index) : base(body)
         {
             this.index = index;

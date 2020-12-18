@@ -11,7 +11,7 @@ namespace Assets.src.constraint
         private float elasticModulus;
         /* 原始长度 */
         private float originLength;
-        private int i1, i2;
+        public int i1, i2;
         public DistanceConstraint(Body body, int i1, int i2, float elasticModulus) : base(body)
         {
             this.elasticModulus = elasticModulus;

@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\src\braid\BraidDemo.cs" />
      <Compile Include="Assets\src\constraint\AbsolutelyPosConstraint.cs" />
      <Compile Include="Assets\src\collision\ACollisionContact.cs" />
      <Compile Include="Assets\src\body\Body.cs" />
@@ -62,12 +63,16 @@
      <Compile Include="Assets\src\constraint\AConstraint.cs" />
      <Compile Include="Assets\src\force\DirectedForce.cs" />
      <Compile Include="Assets\src\constraint\DistanceConstraint.cs" />
+     <Compile Include="Assets\src\body\BraidBody.cs" />
      <Compile Include="Assets\src\body\ClothBody.cs" />
      <Compile Include="Assets\src\solver\Solver.cs" />
      <Compile Include="Assets\src\constraint\BendingConstraint.cs" />
      <Compile Include="Assets\src\force\AEnvironmentForce.cs" />
      <Compile Include="Assets\src\collision\ACollision.cs" />
-     <None Include="Assets\Resources\Cloth\ClothShader.shader" />
+     <Compile Include="Assets\src\braid\BraidGenerator.cs" />
+     <Compile Include="Assets\src\solver\Matrix3x3.cs" />
+     <Compile Include="Assets\src\constraint\ShearStressConstraint.cs" />
+     <None Include="Assets\Resources\DoubleEdgeShader.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/explore/UnityPbd/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

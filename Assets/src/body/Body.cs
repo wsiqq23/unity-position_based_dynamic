@@ -11,21 +11,14 @@ namespace Assets.src.body
         public List<AConstraint> constraints { get; private set; } = new List<AConstraint>();
         public int particlesNum { get; private set; }
         public float damping = 1.0f;
-        private float _radius;
-        public float particleRadius
-        {
-            get { return _radius; }
-            protected set { _radius = value; particleDiameter = 2.0f * value; }
-        }
         public float particleDiameter { get; private set; }
         public float particleMass { get; protected set; }
-        public Body(int particlesNum, float radius, float mass)
+        protected Body(int particlesNum, float mass)
         {
             this.particlesNum = particlesNum;
             positions = new Vector3[particlesNum];
             newPositions = new Vector3[particlesNum];
             velocities = new Vector3[particlesNum];
-            _radius = radius;
             particleMass = mass;
         }
         public void projectConstraints(double dt)

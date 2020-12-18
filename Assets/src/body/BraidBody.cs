@@ -1,20 +1,20 @@
 ﻿using Assets.src.constraint;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Assets.src.body
 {
-    public class ClothBody : Body
+    public class BraidBody : Body
     {
-        public float elasticModulus { get; private set; }
         private Mesh mesh;
-        public ClothBody(Mesh mesh, float mass, float elasticModulus) : base(mesh.vertexCount, mass)
+        private float stretchCoefficient;
+        public BraidBody(Mesh mesh, float mass, float stretchCoefficient) : base(mesh.vertexCount, mass)
         {
             this.mesh = mesh;
-            this.elasticModulus = elasticModulus;
+            this.stretchCoefficient = stretchCoefficient;
             initPositions();
-            initConstraints();
+            initDistanceConstraints();
         }
-
         private void initPositions()
         {
             for (int i = 0; i < particlesNum; i++)
@@ -24,8 +24,7 @@ namespace Assets.src.body
                 newPositions[i].z = positions[i].z = mesh.vertices[i].z;
             }
         }
-
-        private void initConstraints()
+        private void initDistanceConstraints()
         {
             HashSet<int> set = new HashSet<int>();
             for (int i = 0; i < mesh.triangles.Length - 2; i += 3)
@@ -41,9 +40,10 @@ namespace Assets.src.body
             {
                 int i1 = indexHash / 10000;
                 int i2 = indexHash % 10000;
-                DistanceConstraint c = new DistanceConstraint(this, i1, i2, elasticModulus);
+                DistanceConstraint c = new DistanceConstraint(this, i1, i2, stretchCoefficient);
                 constraints.Add(c);
             }
         }
+
     }
 }

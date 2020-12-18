@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClothMaterial
+  m_Name: DoubleEdgeMaterial
   m_Shader: {fileID: 4800000, guid: c2d85f95f24ea61418271bb23f86efd6, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
