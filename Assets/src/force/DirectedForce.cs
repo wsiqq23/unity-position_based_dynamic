@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Assets.src.force
 {
+    /**
+     * Please use utf-8 encoding to read the comment
+     * 
+     */
     class DirectedForce : AEnvironmentForce
     {
         public Vector3 direction;

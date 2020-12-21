@@ -6,6 +6,7 @@ using UnityEngine;
 namespace Assets.src.braid
 {
     /**
+     * Please use utf-8 encoding to read the comment
      * 用六棱柱来生成头发，生成过程比较复杂，单独封装一个生成类
      */
     public class BraidGenerator

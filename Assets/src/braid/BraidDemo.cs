@@ -7,6 +7,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Please use utf-8 encoding to read the comment
+ * 弹性体头发的demo的入口类
+ */
 public class BraidDemo : MonoBehaviour
 {
     // Start is called before the first frame update

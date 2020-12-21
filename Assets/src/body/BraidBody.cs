@@ -27,6 +27,7 @@ namespace Assets.src.body
         private void initDistanceConstraints()
         {
             HashSet<int> set = new HashSet<int>();
+            //使用网格中的三角形来创建距离约束
             for (int i = 0; i < mesh.triangles.Length - 2; i += 3)
             {
                 int i1 = mesh.triangles[i];

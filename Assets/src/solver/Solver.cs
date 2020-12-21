@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Assets.src.solver
 {
+    /**
+     * Please use utf-8 encoding to read the comment
+     * PBD流程的核心控制类
+     */
     public class Solver
     {
         public int solverIteration;

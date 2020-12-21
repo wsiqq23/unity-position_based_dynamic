@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Pleas use utf-8 encoding to read the comment
+ * 布料demo的入口类
+ */
 public class ClothDemo : MonoBehaviour
 {
     private Mesh mesh;
@@ -25,7 +29,10 @@ public class ClothDemo : MonoBehaviour
         initClothMesh(width, height, pos);
         initClothBody();
     }
+    //连接点的顶点序号
     List<int> jointIndexes = new List<int>();
+    //绝对位移约束的列表
+    List<AbsolutelyPosConstraint> jointConstraints = new List<AbsolutelyPosConstraint>();
     private void initClothMesh(float width, float height, Vector3 position)
     {
         int columns = (int)(width + 1);
@@ -38,6 +45,7 @@ public class ClothDemo : MonoBehaviour
         List<Vector2> uvs = new List<Vector2>(verticlesNum);
         List<int> triangleVerts = new List<int>();
         drawPlanePosMatrix = new Matrix4x4[] { Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(Vector3.zero), Vector3.one) };
+        //画一个width*height的网格
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
@@ -71,7 +79,6 @@ public class ClothDemo : MonoBehaviour
         mesh.bounds = new Bounds(new Vector3(0, 0, 0), new Vector3(width, height, 0));
         material = Resources.Load<Material>("DoubleEdgeMaterial");
     }
-    List<AbsolutelyPosConstraint> jointConstraints = new List<AbsolutelyPosConstraint>();
     private void initClothBody()
     {
         solver = new Solver();

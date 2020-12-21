@@ -3,6 +3,10 @@ using UnityEngine;
 
 namespace Assets.src.constraint
 {
+    /**
+     * Please use utf-8 encoding to read the comment
+     * 绝对位移约束
+     */
     public class AbsolutelyPosConstraint : AConstraint
     {
         private int index;
