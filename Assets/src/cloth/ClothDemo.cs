@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * Pleas use utf-8 encoding to read the comment
+ * Please use utf-8 encoding to read the comment
  * 布料demo的入口类
  */
 public class ClothDemo : MonoBehaviour
